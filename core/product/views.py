@@ -8,5 +8,5 @@ from .models import *
 
 def product(request):
     product = Product.objects.all().values()
-    template = loader.get_template('product.html')
+    template = loader.get_template('')
     return HttpResponse(template.render())
