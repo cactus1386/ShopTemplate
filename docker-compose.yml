@@ -26,7 +26,11 @@ services:
     working_dir: /usr/src/app
     command: python manage.py runserver 0.0.0.0:8000
     environment:
+      - SECRET_KEY=test
       - DEBUG=True
+      - COMINGSOON=False
+      - SHOW_DEBUGGER_TOOLBAR=True
+      - ENABLE_DEBUGPY=True
     # restart: always
     ports:
       - 8000:8000
