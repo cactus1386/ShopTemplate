@@ -3,12 +3,12 @@ from django.db import models
 # Create your models here.
 
 
-class StatusChoices(models.IntegerChoices):
+class ProductStatus(models.IntegerChoices):
     publish = 1, ("فعال")
     draft = 2, ("غیر فعال")
 
 
-class Category(models.Model):
+class ProductCategory(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -17,7 +17,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     user = models.ForeignKey('accounts.User', on_delete=models.PROTECT)
-    category = models.ManyToManyField(Category)
+    category = models.ManyToManyField(ProductCategory)
     title = models.CharField(max_length=255)
     slug = models.SlugField(allow_unicode=True)
     image = models.ImageField(
@@ -26,11 +26,14 @@ class Product(models.Model):
     stock = models.PositiveIntegerField(default=0)
     price = models.DecimalField(default=True, max_digits=10, decimal_places=0)
     status = models.IntegerField(
-        choices=StatusChoices.choices, default=StatusChoices.draft.value)
+        choices=ProductStatus.choices, default=ProductStatus.draft.value)
     discount = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
 
 
 class ProductImage(models.Model):
