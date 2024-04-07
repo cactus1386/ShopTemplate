@@ -14,6 +14,9 @@ class ProductCategory(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Product(models.Model):
     user = models.ForeignKey('accounts.User', on_delete=models.PROTECT)
@@ -22,7 +25,7 @@ class Product(models.Model):
     slug = models.SlugField(allow_unicode=True)
     image = models.ImageField(
         default='/defult/product-image.png', upload_to='product/img/')
-    descrption = models.TextField()
+    description = models.TextField()
     stock = models.PositiveIntegerField(default=0)
     price = models.DecimalField(default=True, max_digits=10, decimal_places=0)
     status = models.IntegerField(
@@ -34,6 +37,9 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title
 
 
 class ProductImage(models.Model):
