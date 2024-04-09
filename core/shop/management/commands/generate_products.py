@@ -26,7 +26,6 @@ class Command(BaseCommand):
             "./images/img6.jpg",
             "./images/img7.jpg",
             "./images/img8.jpg",
-            # Add more image filenames as needed
         ]
 
         categories = ProductCategory.objects.all()

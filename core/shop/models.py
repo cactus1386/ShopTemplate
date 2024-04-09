@@ -1,5 +1,5 @@
 from django.db import models
-
+from decimal import Decimal
 # Create your models here.
 
 
@@ -40,6 +40,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_price(self):
+        final_price = self.price - (self.price * Decimal(self.discount / 100))
+        return '{:,}'.format(round(final_price))
 
 
 class ProductImage(models.Model):
