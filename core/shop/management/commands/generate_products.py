@@ -14,7 +14,7 @@ class Command(BaseCommand):
     help = 'Generate fake products'
 
     def handle(self, *args, **options):
-        fake = Faker()
+        fake = Faker(locale='fa_IR')
         user = User.objects.get(type=UserType.superuser.value)
         # List of images
         image_list = [
