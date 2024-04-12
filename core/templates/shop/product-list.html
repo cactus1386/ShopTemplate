@@ -141,11 +141,10 @@
                         <div class="mb-2 mb-sm-0 me-sm-2">
                             <select class="form-select form-select-sm" id="page-size-filter">
                                 <option value="" selected>تعداد در صفحه</option>
-                                <option value="5">5</option>
-                                <option value="10">10</option>
-                                <option value="20">20</option>
+                                <option value="9">9</option>
+                                <option value="12">12</option>
+                                <option value="18">18</option>
                                 <option value="30">30</option>
-                                <option value="50">50</option>
                             </select>
                         </div>
                         <!-- End Select -->
@@ -362,3 +361,19 @@
     </div>
     <!-- End Clients -->
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+    $( document ).ready(function() {
+        let current_url = new URLSearchParams(window.location.search)
+        $("#page-size-filter").val(current_url.get('page_size') || '')
+        $("#min-price-filter").val(current_url.get('min_price') || '')      
+        $("#max-price-filter").val(current_url.get('max_price') || '')      
+        $("#category-id-filter").val(current_url.get('category_id') || '')      
+        $("#search-query-filter").val(current_url.get('q') || '') 
+        $("#order-by-filter").val(current_url.get('order_by') || '')      
+      
+    });
+</script>
+
+{% endblock extra_js %}
