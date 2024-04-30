@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load shop_tags %}
 
 {% block content %}
 <!-- Hero -->
@@ -376,7 +377,11 @@
 </div>
 <!-- End Card Grid -->
 
-<!-- Card Grid -->
+
+{% show_last_product %}
+
+
+{% comment %} <!-- Card Grid -->
 <div class="container content-space-2 content-space-lg-3">
     <!-- Title -->
     <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
@@ -745,7 +750,7 @@
     <a class="btn btn-outline-primary btn-transition rounded-pill" href="#">مشاهده تمامی محصولات</a>
     </div>
 </div>
-<!-- End Card Grid -->
+<!-- End Card Grid --> {% endcomment %}
 
 <!-- Subscribe -->
 <div class="bg-light">

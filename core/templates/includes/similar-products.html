@@ -1,15 +1,16 @@
 {% load static %}
 
-<!-- Card Grid -->
-<div class="container content-space-2 content-space-lg-3">
-    <!-- Title -->
-    <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
-    <h2>جدیدترین محصولات</h2>
-    </div>
-    <!-- End Title -->
+
+    <!-- Card Grid -->
+    <div class="container content-space-2 content-space-lg-3">
+      <!-- Title -->
+      <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
+        <h2>فقط برای شما</h2>
+      </div>
+      <!-- End Title -->
 
     <div class="row row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-3">
-        {% for product in last_products %}
+        {% for product in similar_products %}
         <div class="col mb-4">
           <!-- Card -->
           <div class="card card-bordered shadow-none text-center h-100">
@@ -97,10 +98,6 @@
         <!-- End Col -->
         {% endfor %}
     </div>
-    <!-- End Row -->
-
-    <div class="text-center">
-    <a class="btn btn-outline-primary btn-transition rounded-pill" href="{% url 'shop:product-list' %}">مشاهده تمامی محصولات</a>
+      <!-- End Row -->
     </div>
-</div>
-<!-- End Card Grid -->
+    <!-- End Card Grid -->

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load shop_tags %}
 
 {% block content %}
     <!-- Hero -->
@@ -61,6 +62,7 @@
           <!-- Heading -->
           <div class="mb-5">
             <h1 class="h2">{{object.title}}</h1>
+            <p>{% for category in object.category.all %} <a href='#'>{{category.title}}</a> {% if not forloop.last %} ,{% endif %}{% endfor %}</p>
             <p>{{ object.brief_description }}</p>
           </div>
           <!-- End Heading -->
@@ -237,7 +239,7 @@
     </div>
     <!-- End Content --> {% endcomment %}
 
-    <!-- Card Grid -->
+    {% comment %} <!-- Card Grid -->
     <div class="container content-space-2 content-space-lg-3">
       <!-- Title -->
       <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
@@ -424,7 +426,10 @@
       </div>
       <!-- End Row -->
     </div>
-    <!-- End Card Grid -->
+    <!-- End Card Grid --> {% endcomment %}
+
+    {% show_similar_product product=object %}
+
 
     <!-- Review Section -->
     <div id="reviewSection" class="container content-space-b-2 content-space-b-lg-3">
