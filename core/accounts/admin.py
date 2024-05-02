@@ -1,3 +1,4 @@
+from django.contrib.sessions.models import Session
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import User, Profile
@@ -75,3 +76,13 @@ class CustomProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile, CustomProfileAdmin)
 admin.site.register(User, CustomUserAdmin)
+
+
+class SessionAdmin(admin.ModelAdmin):
+    def _session_data(self, obj):
+        return obj.get_decoded()
+    list_display = ['session_key', '_session_data', 'expire_date']
+    readonly_fields = ('_session_data',)
+
+
+admin.site.register(Session, SessionAdmin)
